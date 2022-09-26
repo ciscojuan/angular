@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { EditorModule } from "@tinymce/tinymce-angular"; //tynyMCW - rich text editor
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,8 @@ import { ShopComponent } from './components/shop/shop.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

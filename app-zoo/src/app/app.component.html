@@ -6,7 +6,7 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<nav class="navbar navbar-expand-xl navbar-light " style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-xl navbar-light m-3 rounded " style="background-color: #c1c9cf;">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="['/home']">{{title}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLight" aria-controls="navbarLight" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,22 +15,22 @@
     <div class="collapse navbar-collapse show" id="navbarLight">
       <ul class="navbar-nav me-auto mb-2 mb-xl-0">
         <li class="nav-item">
-          <a [routerLink]="['/home']" class="nav-link active" aria-current="page"><span class="bi bi-house-door-fill"></span>Home</a>
+          <a [routerLink]="['/home']" class="nav-link " [routerLinkActive]="['active']"  aria-current="page"><span class="bi bi-house-door-fill"></span>Home</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/animals']" class="nav-link active" aria-current="page">Animals</a>
+          <a [routerLink]="['/animals']" class="nav-link" [routerLinkActive]="['active']" aria-current="page">Animals</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/keepers']" class="nav-link active" aria-current="page">Keepers</a>
+          <a [routerLink]="['/keepers']" class="nav-link" [routerLinkActive]="['active']" aria-current="page">Keepers</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/tienda']" class="nav-link active" aria-current="page">Shop</a>
+          <a [routerLink]="['/tienda']" class="nav-link" [routerLinkActive]="['active']" aria-current="page">Shop</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/contact']" class="nav-link active" aria-current="page">Contact</a>
+          <a [routerLink]="['/contact']" class="nav-link" [routerLinkActive]="['active']" aria-current="page">Contact</a>
         </li>
         <li class="nav-item">
-          <span *ngIf="!emailContacto">
+          <span *ngIf="emailContacto">
             Email de contacto:{{emailContacto}}
             <button (click)="borrarDatos()">Borrar email de Contacto</button>
           </span>

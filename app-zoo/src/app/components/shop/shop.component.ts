@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
@@ -10,7 +13,10 @@ export class ShopComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('Componente Tienda Lanzado !!!')
+    $('.texto-jq').hide();
+    $('#btn-jq').click(function(){
+      $('.texto-jq').slideToggle();
+    })
   }
 
 }
