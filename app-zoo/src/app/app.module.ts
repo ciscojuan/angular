@@ -9,6 +9,7 @@ import { AnimalsComponent } from './components/animals/animals.component';
 import { KeepersComponent } from './components/keepers/keepers.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 //importar nuestro modulklo
 import { MailModule } from './emailmodule/components/mail.module';
 import { AdminModule } from './admin/components/main/admin.module';
@@ -31,6 +32,7 @@ import { AdminModule } from './admin/components/main/admin.module';
     MailModule,
     AdminModule,
     AppRoutingModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],

@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { fadeIn } from '../animations.component';
 import * as $ from 'jquery';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+  styleUrls: ['./shop.component.scss'],
+  animations: [fadeIn]
 })
+
 export class ShopComponent implements OnInit {
+  showEvents = true
   title = 'Tienda'
-  constructor() { }
+  public state;
+  constructor() {
+    this.state = 'inactive';
+   }
 
   ngOnInit(): void {
     $('.texto-jq').hide();

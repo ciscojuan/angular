@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styles: ['']
 })
 export class AddComponent implements OnInit {
-  title: string = 'Añadir de Animales';
+  title: string = 'Añadir Animales';
   constructor() { }
 
   ngOnInit(): void {

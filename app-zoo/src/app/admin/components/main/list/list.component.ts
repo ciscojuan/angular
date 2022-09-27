@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
   title: string = 'Listado de Animales';
-  numbers = new Array(5);
+  numbers = new Array(10);
   constructor() { }
 
   ngOnInit(): void {
