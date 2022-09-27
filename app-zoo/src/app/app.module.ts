@@ -9,6 +9,8 @@ import { AnimalsComponent } from './components/animals/animals.component';
 import { KeepersComponent } from './components/keepers/keepers.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ShopComponent } from './components/shop/shop.component';
+//importar nuestro modulklo
+import { MailModule } from './emailmodule/components/mail.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ShopComponent } from './components/shop/shop.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    EditorModule
+    EditorModule,
+    MailModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

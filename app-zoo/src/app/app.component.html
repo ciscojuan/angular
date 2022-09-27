@@ -13,30 +13,26 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse show" id="navbarLight">
-      <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+      <ul class="navbar-nav me-auto mb-2 mb-xl-0 mx-5">
         <li class="nav-item">
-          <a [routerLink]="['/home']" class="nav-link " [routerLinkActive]="['active']"  aria-current="page"><span class="bi bi-house-door-fill"></span>Home</a>
+          <a [routerLink]="['/home']" class="nav-link " [routerLinkActive]="['active']"  aria-current="page"><i class="bi bi-house-door-fill"></i> Home</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/animals']" class="nav-link" [routerLinkActive]="['active']" aria-current="page">Animals</a>
+          <a [routerLink]="['/animals']" class="nav-link" [routerLinkActive]="['active']" aria-current="page"><i class="bi bi-stars"></i> Animals</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/keepers']" class="nav-link" [routerLinkActive]="['active']" aria-current="page">Keepers</a>
+          <a [routerLink]="['/keepers']" class="nav-link" [routerLinkActive]="['active']" aria-current="page"><i class="bi bi-people-fill"></i> Keepers</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/tienda']" class="nav-link" [routerLinkActive]="['active']" aria-current="page">Shop</a>
+          <a [routerLink]="['/tienda']" class="nav-link" [routerLinkActive]="['active']" aria-current="page"><i class="bi bi-shop"></i> Shop</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/contact']" class="nav-link" [routerLinkActive]="['active']" aria-current="page">Contact</a>
+          <a [routerLink]="['/contact']" class="nav-link" [routerLinkActive]="['active']" aria-current="page"><i class="bi bi-phone-vibrate-fill"></i> Contact</a>
         </li>
-        <li class="nav-item">
-          <span *ngIf="emailContacto">
-            Email de contacto:{{emailContacto}}
-            <button (click)="borrarDatos()">Borrar email de Contacto</button>
-          </span>
-        </li>
+
       </ul>
       <form class="d-flex">
+
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" data-np-invisible="1" data-np-checked="1">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>
