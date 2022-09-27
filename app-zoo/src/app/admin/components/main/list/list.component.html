@@ -1,0 +1,30 @@
+<h2 class="text-lg-center">{{title}}</h2>
+<!--<div class="container-fluid">-->
+  <table class="table table-borderless table-hover text-center">
+    <thead >
+      <td>Nombre</td>
+      <td>Año</td>
+      <td>Acciones</td>
+    </thead>
+    <tbody class="">
+      <tr *ngFor="let n of numbers; let i index">
+        <td>Aguila {{i}}</td>
+        <td>2020</td>
+        <td>
+          <button class="btn mx-2 btn-md btn-outline-success">
+            <i class="bi bi-eye-fill"></i>
+            Ver
+          </button>
+          <button class="btn mx-2 btn-md btn-outline-danger">
+            <i class="bi bi-pencil"></i>
+            Eliminar
+          </button>
+          <button class="btn mx-2 btn-md btn-outline-warning">
+            <i class="bi bi-trash"></i>
+            Editar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<!--</div> -->

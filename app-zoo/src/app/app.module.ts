@@ -11,6 +11,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ShopComponent } from './components/shop/shop.component';
 //importar nuestro modulklo
 import { MailModule } from './emailmodule/components/mail.module';
+import { AdminModule } from './admin/components/main/admin.module';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { MailModule } from './emailmodule/components/mail.module';
     KeepersComponent,
     ContactComponent,
     ShopComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     EditorModule,
-    MailModule
+    MailModule,
+    AdminModule,
+    AppRoutingModule,
 
   ],
   providers: [],
