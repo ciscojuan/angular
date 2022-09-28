@@ -1,0 +1,11 @@
+{
+  "name": "zoo-back",
+  "version": "1.0.0",
+  "description": "This is the api for my Zoo app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JuanRamirez",
+  "license": "ISC"
+}
