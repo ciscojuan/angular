@@ -3,6 +3,8 @@
 const bcrypt = require("bcrypt-nodejs");
 const user = require("../models/user");
 
+//services
+const jwt = require('../services/jwt')
 //models
 const User = require("../models/user");
 
@@ -40,20 +42,17 @@ const saveUser = (req, res) => {
 
             //save user into db
             user.save((err, userStored) => {
-              if (err) {
-                res.status(500).send({ message: "Error al guardar el usuario" });
-              } else {
-                if (!userStored) {
-                  res.status(404).send({ message: "No se ha registrado el usuario" });
-                } else {
-                  res.status(201).send({
-                    message: "Usuario guardado en la Base de Datos ...",
-                    user: userStored,
-                  });
+                if(err){
+                    res.status(500).send({ message: "Error al guardar el usuario" });
+                }else{
+                    if (!userStored){ 
+                    res.status(404).send({ message: "No se ha registrado el usuario" });
+                    } else {
+                    res.status(201).send({message: "Usuario guardado en la Base de Datos ...", user: userStored, });
+                    }
                 }
-              }
+                }); 
             });
-          });
         } else {
             res.status(200).send({
                 message: "El usuario no puede registrarce, ya hay uno con el mismo email.",
@@ -82,12 +81,21 @@ const login = (req, res) => {
             if(user){
                 //match password ? login successfull : err
                 bcrypt.compare(password, user.password, (err, check) =>{
-                    check ? res.status(200).send({user}) : res.status(400).send({message: 'email o contraseña no existe'});
-                   /*  if(check){ 
-                        res.status(200).send({user})
+                    
+                    if(check){ 
+
+                        if(params.gettoken){
+                          //get jwat token
+                          res.status(200).send({
+                            token: jwt.CreateToken(user)
+                          });
+                        }else{
+                          res.status(200).send({user})
+                        }
+
                     }else{
                         res.status(400).send({message: 'email o contraseña no existe'});
-                    } */
+                    }
                 })
             }else{
                 res.status(400).send({message: 'El usuario no existe'});
