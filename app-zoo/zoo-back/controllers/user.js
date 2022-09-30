@@ -1,6 +1,7 @@
 "use strict";
 //modules
 const bcrypt = require("bcrypt-nodejs");
+const user = require("../models/user");
 
 //models
 const User = require("../models/user");
@@ -68,7 +69,35 @@ const saveUser = (req, res) => {
   }
 };
 
+const login = (req, res) => {
+    //get user data
+    const params = req.body;
+    const email = params.email;
+    const password = params.password;
+    //Check user existed
+    User.findOne({email: email.toLowerCase()}, (err, user)=>{
+        if(err){
+            res.status(500).send({message: 'Error al comprobar el usuario'});
+        }else{
+            if(user){
+                //match password ? login successfull : err
+                bcrypt.compare(password, user.password, (err, check) =>{
+                    check ? res.status(200).send({user}) : res.status(400).send({message: 'email o contraseña no existe'});
+                   /*  if(check){ 
+                        res.status(200).send({user})
+                    }else{
+                        res.status(400).send({message: 'email o contraseña no existe'});
+                    } */
+                })
+            }else{
+                res.status(400).send({message: 'El usuario no existe'});
+            }
+        }
+    });
+}
+
 module.exports = {
   pruebas,
   saveUser,
+  login
 };
