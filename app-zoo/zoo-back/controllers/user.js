@@ -11,6 +11,7 @@ const User = require("../models/user");
 const pruebas = (req, res) => {
   res.status(200).send({
     message: "Probando el contrrolador usuario y la accion pruebas",
+    user: req.user
   });
 };
 
@@ -81,7 +82,7 @@ const login = (req, res) => {
             if(user){
                 //match password ? login successfull : err
                 bcrypt.compare(password, user.password, (err, check) =>{
-                    
+                    //generate token
                     if(check){ 
 
                         if(params.gettoken){
@@ -104,8 +105,34 @@ const login = (req, res) => {
     });
 }
 
+const updateUser = (req, res) =>{
+  var user_id = req.params.id;
+  var update = req.body;
+
+  if(user_id != req.user.sub){
+    res.status(500).send({message: 'No tienes permiso para actualizar el usuario'} )
+  }
+  
+  User.findByIdAndUpdate(user_id, update,{new: true}, (err, userUpdated) =>{
+    if(err){
+      res.status(500).send({message: 'Error al actualizar usuario'})
+    }else{
+      if(!userUpdated){
+        res.status(404).send({message: 'No se ha podido actualizar el usuario'});
+      }else{
+        res.status(200).send({user: 'Usuario actualizado con exito'});
+      }
+    }
+  });
+}
+
+const uploadImage = (req, res) =>{
+  res.status(200).send({message: 'Imagen subida al servidor'});
+}
 module.exports = {
   pruebas,
   saveUser,
-  login
+  login,
+  updateUser,
+  uploadImage
 };
