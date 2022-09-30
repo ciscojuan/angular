@@ -2,6 +2,7 @@
 //modules
 const bcrypt = require("bcrypt-nodejs");
 const user = require("../models/user");
+const fs = require('fs');
 
 //services
 const jwt = require('../services/jwt')
@@ -136,7 +137,7 @@ const uploadImage = (req, res) =>{
     var file_name = file_split[2];
 
     var ext_split = file_name.split('\.');
-    var file_ext = ext_split[1];
+    var file_ext = ext_split[1].toLowerCase();
 
     if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg' || file_ext == 'png'){
       
@@ -159,7 +160,13 @@ const uploadImage = (req, res) =>{
       });
       
     }else{
-      res.status(200).send({message: 'Formato no valido ...'})
+      fs.unlink(file_path, (err) =>{
+        if(err){
+          res.status(200).send({message: 'Formato no valido y fichero no borrado...'})
+        }else{
+          res.status(200).send({message: 'Formato no valido ...'})
+        }
+      });
     }
   }else{
     res.status(200).send({message: 'Imagen no cargada ...'})
