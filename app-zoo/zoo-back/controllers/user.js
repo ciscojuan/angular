@@ -3,15 +3,17 @@
 const bcrypt = require("bcrypt-nodejs");
 const user = require("../models/user");
 const fs = require('fs');
+const path = require('path'); //rutas de sistema de archivo
 
 //services
 const jwt = require('../services/jwt')
 //models
 const User = require("../models/user");
+//const { exists } = require("../models/user");
 
 const pruebas = (req, res) => {
   res.status(200).send({
-    message: "Probando el contrrolador usuario y la accion pruebas",
+    message: "Probando el controlador usuario y la accion pruebas",
     user: req.user
   });
 };
@@ -174,10 +176,42 @@ const uploadImage = (req, res) =>{
   
 }
 
+const getImage = (req, res) =>{
+  var imageFile = req.params.imageFile;
+  var path_file = './uploads/users/'+imageFile;
+
+  fs.access(path_file, (err)=>{
+    if(!err){
+      res.status(200).sendFile(path.resolve(path_file));
+    }
+    else{
+      res.status(404).send({message: 'la imagen no existe'})
+    }
+  })
+}
+
+const keepers = (req, res) =>{
+  //select * from coleccione WHERE ROLE == 'admin'
+  User.find({role:'ROLE_ADMIN'}).exec((err, users) => {
+    if(err){
+      res.status(500).send({message: 'Error en la peticion'});
+
+    }else{
+      if(!users){
+        res.status(404).send({message: 'No hay cuidadores para mostrar!'});
+        
+      }else{
+        res.status(200).send({users});
+      }
+    }
+  });
+}
 module.exports = {
   pruebas,
   saveUser,
   login,
   updateUser,
-  uploadImage
+  uploadImage,
+  getImage,
+  keepers
 };
