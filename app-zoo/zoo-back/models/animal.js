@@ -8,7 +8,7 @@ const AnimalSchema= Schema({
     description: String,
     year: Date,
     image: String,
-    user_id: {type: Schema.ObjectId, ref:'User'},
-    country: String
+    user: {type: Schema.ObjectId, ref:'User'},
+    country: String,
 });
 module.exports = mongoose.model('Animal', AnimalSchema);
