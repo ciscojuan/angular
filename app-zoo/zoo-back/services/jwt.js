@@ -17,5 +17,5 @@ exports.CreateToken = (user) =>{
         create_date: moment().unix(),
         exp_date: moment().add(30, 'days').unix
     };
-    return jwt.encode(payload, passwd);
+    return jwt.encode(payload, secret);
 }
