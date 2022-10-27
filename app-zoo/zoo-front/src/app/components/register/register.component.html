@@ -1,0 +1,56 @@
+
+<div class="container" [@fadeIn]>
+
+  <form class="form form-control" #registerForm="ngForm" (ngSubmit)="onSubmit()" >
+
+    <h1 class="text-center">{{title}}</h1>
+
+    <div class="row mt-5 d-flex justify-content-center ">
+
+      <div class="col-md-7 mb-3 form-contol">
+        <input type="text" class="form-control form-control-lg" name="name" #name=ngModel [(ngModel)]="user.name" placeholder="Name" required>
+        <span *ngIf="!name.valid && name.touched"  class="form-text text-danger">Write you name.</span>
+      </div>
+
+      <div class="col-md-7 mb-3 form-contol">
+        <input type="text" class="form-control form-control-lg" name="surname" #surname=ngModel [(ngModel)]="user.surname" placeholder="Surname" required>
+        <span *ngIf="!surname.valid && surname.touched"  class="form-text text-danger">Write your surname.</span>
+      </div>
+
+      <div class="col-md-7 mb-3 form-contol">
+        <input type="email" class="form-control form-control-lg" name="email" #email=ngModel [(ngModel)]="user.email" placeholder="Email" required>
+        <span *ngIf="!email.valid && email.touched"  class="form-text text-danger">Write your email. We'll never share your email with anyone.</span>
+      </div>
+
+      <div class="col-md-7 mb-3 form-contol">
+        <input type="password" class="form-control form-control-lg" name="password" #password=ngModel [(ngModel)]="user.password" placeholder="Password" required>
+        <span *ngIf="!password.valid && password.touched"  class="form-text text-danger">Enter a password. Your password will encode for security.</span>
+      </div>
+
+      <div class="col-md-7 mb-3 form-contol" name="role" #role="ngModel" [(ngModel)]="user.role">
+        <select class="form-select form-select-lg" required>
+          <option selected>Enter a Rol</option>
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+        </select>
+        <span *ngIf="!role.valid && role.touched" class="form-text" text-danger>Select user option as default.</span>
+      </div>
+
+      <div class="col-md-7 mb-3 form-contol">
+        <input type="country" class="form-control form-control-lg" name="country" #country=ngModel [(ngModel)]="user.country" placeholder="Country" required>
+        <span *ngIf="!country.valid && country.touched"  class="form-text text-danger">Entre your country.</span>
+      </div>
+
+      <div class="col-md-7">
+        <input type="file" class="form-control form-control-lg" name="image" #image="ngModel" [(ngModel)]="user.image">
+        <span *ngIf="!name.valid && name.touched"  class="form-text text-danger">upload an image png, jpe, jpg o gif.</span>
+      </div>
+
+      <div class="col-md-6 m-5">
+        <input class="btn btn-lg btn-lg btn-success" value="Register" [disabled]="!registerForm.valid"/>
+      </div>
+    </div>
+
+  </form>
+
+</div>

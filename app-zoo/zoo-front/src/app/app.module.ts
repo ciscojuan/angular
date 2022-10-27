@@ -10,9 +10,12 @@ import { KeepersComponent } from './components/keepers/keepers.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-//importar nuestro modulklo
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+//importacion de modulos modulo
 import { MailModule } from './emailmodule/components/mail.module';
 import { AdminModule } from './admin/components/main/admin.module';
+
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import { AdminModule } from './admin/components/main/admin.module';
     AnimalsComponent,
     KeepersComponent,
     ContactComponent,
-    ShopComponent
+    ShopComponent,
+    LoginComponent,
+    RegisterComponent
 
   ],
   imports: [
