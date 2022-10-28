@@ -1,11 +1,19 @@
 
 <div class="container" [@fadeIn]>
 
-  <form class="form form-control" #registerForm="ngForm" (ngSubmit)="onSubmit()" >
+  <form class="form form-control" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" >
 
     <h1 class="text-center">{{title}}</h1>
 
+
     <div class="row mt-5 d-flex justify-content-center ">
+
+      <div class="alert alert-success col-md-7" *ngIf="status=='success'">
+        Registro realizado correctamente. <a [routerLink]="['/login']">Identificate aqui</a>.
+      </div>
+      <div class="alert alert-danger col-md-7" *ngIf="status=='error'">
+        No te has registrado correctamente.
+      </div>
 
       <div class="col-md-7 mb-3 form-contol">
         <input type="text" class="form-control form-control-lg" name="name" #name=ngModel [(ngModel)]="user.name" placeholder="Name" required>
@@ -27,8 +35,8 @@
         <span *ngIf="!password.valid && password.touched"  class="form-text text-danger">Enter a password. Your password will encode for security.</span>
       </div>
 
-      <div class="col-md-7 mb-3 form-contol" name="role" #role="ngModel" [(ngModel)]="user.role">
-        <select class="form-select form-select-lg" required>
+      <div class="col-md-7 mb-3 form-contol">
+        <select class="form-select form-select-lg" name="role" #role="ngModel" [(ngModel)]="user.role" required>
           <option selected>Enter a Rol</option>
           <option value="admin">Admin</option>
           <option value="user">User</option>
@@ -47,7 +55,7 @@
       </div>
 
       <div class="col-md-6 m-5">
-        <input class="btn btn-lg btn-lg btn-success" value="Register" [disabled]="!registerForm.valid"/>
+        <input class="btn btn-lg btn-lg btn-success" value="Register" type="submit" [disabled]="!registerForm.valid"/>
       </div>
     </div>
 
