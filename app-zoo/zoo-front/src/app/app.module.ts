@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { EditorModule } from "@tinymce/tinymce-angular"; //tynyMCW - rich text editor
+import { ReactiveFormsModule } from '@angular/forms'; // Ractive Forms
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +35,7 @@ import { AdminModule } from './admin/components/main/admin.module';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     EditorModule,
     MailModule,
     AdminModule,

@@ -19,14 +19,19 @@ export class UserService {
   register(user:User): Observable<any>{
 
     let params = JSON.stringify(user);
-    console.log('linea 22'+ params)
-
     let headers = new HttpHeaders({'Content-Type':'application/json'})
 
-    console.log('Parametros: '+ headers);
-
     return this.http.post(this.url+'save',params,{headers : headers})
+  }
 
+  sigIn(userLogin:any, gettoken:any = null):Observable<any>{
+    if(gettoken != null){
+      userLogin.gettoken = gettoken;
+    }
+    let params = JSON.stringify(userLogin);
+    let headers = new HttpHeaders({'Content-Type':'application/json'})
+
+    return this.http.post(this.url+'login', params, {headers : headers})
   }
 }
 

@@ -20,17 +20,19 @@ export class RegisterComponent implements OnInit {
   public title:string;
   public user: User;
   public status:string;
-
+  public randomImage : string
 
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private _userService: UserService
+
   ) {
     this.title = 'Registro de Usuarios';
     this.user = new User('','','','','','user','','');
     this.status = '';
+    this.randomImage = 'https://source.unsplash.com/random';
 
 
    }

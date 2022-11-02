@@ -6,7 +6,7 @@ const mdAuth = require('../middlewares/authenticate')
 const api = express.Router();
 
 const multipart = require('connect-multiparty');
-const md_uploads = multipart({uploadDir: './uploads/users'});
+const md_uploads = multipart({uploadDir: './uploads/users/'});
 
 api.get('/pruebas', mdAuth.ensureAuth, UserController.pruebas);
 api.post('/save', UserController.saveUser)

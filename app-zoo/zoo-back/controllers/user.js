@@ -90,10 +90,14 @@ const login = (req, res) => {
                         if(params.gettoken){
                           //get jwat token
                           res.status(200).send({
-                            token: jwt.CreateToken(user)
+                            token: jwt.CreateToken(user),
+                            message: 'Token Generado exitosamente: '
                           });
                         }else{
-                          res.status(200).send({user})
+                          res.status(200).send({
+                            user,
+                            message: 'No hay token'
+                          })
                         }
 
                     }else{
@@ -101,7 +105,7 @@ const login = (req, res) => {
                     }
                 })
             }else{
-                res.status(400).send({message: 'El usuario no existe'});
+                res.status(404).send({message: 'El usuario no existe'});
             }
         }
     });

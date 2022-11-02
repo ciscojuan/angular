@@ -1,36 +1,37 @@
 
-.caja{
-  width: 150px;
-  height: 150px;
-  margin-top: 30px;
-  background-color: green;
-  border:5px solid black;
-  animation-name: caja;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
+.box{
+    height: 200px;
+    width: 200px;
+    overflow: auto;
+    background: red;
 }
 
-@keyframes caja {
-0%{
-  margin-left:0px;
+.products--grid{
+    display: flex;
+    flex-direction: column;
+    div{
+        img{
+            width: 100%;
+            border-radius: 10px;
+        }
+        h2, p{
+            margin: 0;
+        }
+    }
 }
-25%{
-  margin-left: 250px;
-  border-radius: 20px;
-}
-50%{
-  margin-left: 500px;
-  border-radius:40px;
-  background-color: red;
-}
-75%{
-margin-left: 250px;
-border-radius: 60px;
-background-color: rgb(46, 97, 46);
-}
-100%{
-  margin-left: 0px;
-  border-radius: 80px;
-  background-color: green;
-}
-}
+
+@media (min-width: 30em) and (max-width: 40em){
+    .product--grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 15px;
+    }
+    }
+
+@media screen and (min-width: 40em){
+    .product--grid{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 15px;
+    }
+  }

@@ -1,13 +1,40 @@
 <div class="container" [@fadeIn]>
   <h1>{{title}}</h1>
-<hr>
-    <button id="btn-jq">Mostrar Textos</button>
-    <p class="texto-jq alert alert-warning">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis, quod sapiente distinctio veritatis laudantium, est fugiat, numquam repudiandae fugit perspiciatis molestiae dolor eius et a incidunt itaque aliquam optio quis?</p>
 
-    <div class="caja mt-5"></div>
-<hr>
+<h2>*ngFor Object</h2>
+<div class="form-group">
+  <input class="form-control form-control-lg m-5" placeholder="Producto" type="text" [ngModel]="product" required/>
+</div>
+<div class="form-group">
+  <input class="form-control form-control-lg m-5" placeholder="Precio" type="text" [ngModel]="price" required/>
+</div>
+<div class="form-group text-center mb-5" >
+  <button class="btn btn-lg btn-success text-center" (click)="addProduct()">ADD</button>
+</div>
+
+
+
+<div class="products--grid">
+  <div *ngFor=" let product of products">
+      <img [src]="product.image"  alt="image">
+      <h2>{{product.price}}</h2>
+      <p>{{product.product}}</p>
+  </div>
+</div>
 
 <hr>
-<hr>
+<div class="form-group">
+  <input class="form-control form-control-lg m-5" placeholder="Ingresa tu password" type="password" [formControl]="passwdlCtrl" required/>
+</div>
+
+<div class="form-group" >
+  <div>
+    <p *ngIf="passwdlCtrl.errors && passwdlCtrl.dirty">
+      <small class="text-danger" *ngIf="passwdlCtrl.hasError('required')">El campo es requerido</small>
+      <small class="text-danger" *ngIf="passwdlCtrl.hasError('maxlength')">Debe ser maximo de 10</small>
+      <small class="text-danger" *ngIf="passwdlCtrl.hasError('minlength')">Debe ser mínimo de 4</small>
+    </p>
+  </div>
+</div>
 <hr>
 </div>

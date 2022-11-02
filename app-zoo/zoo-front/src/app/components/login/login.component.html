@@ -1,4 +1,34 @@
 <div class="container" [@fadeIn]>
   <h1>{{title}}</h1>
+  <form class="form form-control" #loginForm="ngForm" (ngSubmit)="onSubmit()">
+
+
+    <h1 class="text-center">{{title}}</h1>
+
+    <div class="row mt-5 d-flex justify-content-center ">
+
+      <div class="alert alert-success col-md-7 text-center" *ngIf="status == 'success'">
+        Autenticacion realizada correctamente !!!
+      </div>
+      <div class="alert alert-danger col-md-7 text-center" *ngIf="status == 'error'" >
+        No te has registrado correctamente.
+      </div>
+
+      <div class="col-md-7 mb-3 form-contol">
+        <input type="email" class="form-control form-control-lg" name="email" #email="ngModel" [(ngModel)]="user.email"  placeholder="Email" required>
+        <span class="text-danger" *ngIf="!email.valid && email.touched">Write your Email.</span>
+      </div>
+
+      <div class="col-md-7 mb-3 form-contol">
+        <input type="password" class="form-control form-control-lg" name="password" #passwor="ngModel" [(ngModel)]="user.password" placeholder="Password" required>
+        <span class="text-danger" *ngIf="!passwor.valid && passwor.touched">Write your password.</span>
+      </div>
+
+      <div class="col-md-6 m-5">
+        <input class="btn btn-lg btn-lg btn-success" [disabled]="loginForm.invalid" value="Register" type="submit"/>
+      </div>
+    </div>
+
+  </form>
 </div>
 
