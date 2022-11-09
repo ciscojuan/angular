@@ -31,10 +31,10 @@
         </li>
       </ul>
 
-      <ul class=" nav navbar-nav navbar-right">
+      <ul class=" nav navbar-nav navbar-right" *ngIf="!identity.email">
         <li class="nav-item">
           <a [routerLink]="['/login']" class="nav-link" [routerLinkActive]="['active']">
-            <i class="bi bi-incognito"></i>
+            <i class="bi bi-box-arrow-right"></i>
             Login
           </a>
         </li>
@@ -45,6 +45,21 @@
           </a>
         </li>
       </ul>
+
+      <ul class=" nav navbar-nav navbar-right" *ngIf="identity">
+        <li class="nav-item"><span class="dropdown-item-text text-style-bold">{{identity.name}}</span></li>
+        <li class="nav-item"><a class="dropdown-item" href="#">
+          <i class="bi bi-person-bounding-box"></i>
+          Mis Datos</a>
+        </li>
+        <li class="nav-item">
+          <a class="dropdown-item" href="#">
+          <i class="bi bi-box-arrow-in-left"></i>
+          Salir</a>
+        </li>
+
+      </ul>
+
     </div>
   </div>
 </nav>

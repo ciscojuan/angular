@@ -14,9 +14,10 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
   public title : string;
   public user: User;
-  public identity:any;
+  public identity: any;
   public token: any;
   public status: string = '';
+
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -27,7 +28,9 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log('Componente login.component cargado')
+
+    console.log(this._userService.getIdentity());
+    console.log(this._userService.getToken());
   }
 
   onSubmit(){
@@ -36,8 +39,9 @@ export class LoginComponent implements OnInit {
       ress => {
         this.identity = ress.user
         if(this.identity){
-          //Mostrar identity
-          console.log(this.identity)
+
+          localStorage.setItem('identity', JSON.stringify(this.identity))
+
           //conseguir token
           this._userService.sigIn(this.user, true).subscribe(
             ress =>{
@@ -46,7 +50,8 @@ export class LoginComponent implements OnInit {
                 alert('El token no se ha generado');
 
               }else{
-                console.log(this.token);
+                localStorage.setItem('token', this.token)
+
                 this.status = 'success'
               }
             },
